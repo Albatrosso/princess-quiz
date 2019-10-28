@@ -6,13 +6,11 @@
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue';
+  import { Vue, Component} from 'vue-property-decorator';
+  import HelloWorld from '@/components/HelloWorld.vue';
 
-export default {
-  name: 'home',
-  components: {
-    HelloWorld,
-  },
+  @Component
+  export default class Questions extends Vue {
+
 };
 </script>
