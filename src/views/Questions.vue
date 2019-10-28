@@ -5,15 +5,30 @@
       <div class="content">
         <h1>Простые вопросы</h1>
         <section class="question-cards--simple">
-          <el-card v-for="simple in simpleQuestion" :key="simple.id">{{simple.cost}}</el-card>
+          <el-card
+                  v-for="simple in question.simple"
+                  :key="simple.id"
+                  @click.native="goToCard(simple.id)">
+            {{simple.cost}}
+          </el-card>
         </section>
         <h1>Средние вопросы</h1>
         <section class="question-cards--medium">
-          <el-card v-for="medium in mediumQuestion" :key="medium.id">{{medium.cost}}</el-card>
+          <el-card
+                  v-for="medium in question.medium"
+                  :key="medium.id"
+                  @click.native="goToCard(medium.id)">
+            {{medium.cost}}
+          </el-card>
         </section>
         <h1>Сложные вопросы</h1>
         <section class="question-cards--hard">
-          <el-card  v-for="hard in hardQuestion" :key="hard.id">{{hard.cost}}</el-card>
+          <el-card
+                    v-for="hard in question.hard"
+                    :key="hard.id"
+                    @click.native="goToCard(hard.id)">
+            {{hard.cost}}
+          </el-card>
         </section>
       </div>
     </div>
@@ -29,17 +44,19 @@ import Header from '@/components/header.vue';
   components: { Header },
 })
 export default class Questions extends Vue {
-  simpleQuestion = [];
+  question = [];
 
-  mediumQuestion =[];
 
-  hardQuestion = [];
+  goToCard(id) {
+    console.log(id);
+    console.log(this.question);
+    this.$store.dispatch('setQuestion', this.question);
+    this.$router.push({ path: `/question/${id}` });
+  }
 
   mounted() {
     axios.get('http://localhost:9090/question').then((response) => {
-      this.simpleQuestion = response.data.simple;
-      this.mediumQuestion = response.data.medium;
-      this.hardQuestion = response.data.hard;
+      this.question = response.data;
     });
   }
 }

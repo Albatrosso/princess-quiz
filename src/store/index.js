@@ -11,6 +11,9 @@ export default new Vuex.Store({
     },
 
   },
+  getters: {
+    getQuestion: state => state.question,
+  },
   mutations: {
     setQuestion: (state, payload) => {
       state.question.name = payload.name;
