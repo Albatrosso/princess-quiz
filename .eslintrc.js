@@ -13,5 +13,6 @@ module.exports = {
   },
   parserOptions: {
     parser: 'babel-eslint',
+    ecmaFeatures: { ecmaVersion: 2017, legacyDecorators: true }
   },
 };

@@ -6,11 +6,12 @@
 </template>
 
 <script>
-  import { Vue, Component} from 'vue-property-decorator';
-  import HelloWorld from '@/components/HelloWorld.vue';
+import { Vue, Component} from 'vue-property-decorator';
+import HelloWorld from '@/components/HelloWorld.vue';
 
-  @Component
-  export default class Questions extends Vue {
+@Component({})
+export default class Questions extends Vue {
+
 
 };
 </script>
